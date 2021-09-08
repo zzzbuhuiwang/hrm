@@ -1,4 +1,4 @@
-package com.jaden.hrm.entity;
+package com.jaden.hrm.common.entity;
 
 
 /**
