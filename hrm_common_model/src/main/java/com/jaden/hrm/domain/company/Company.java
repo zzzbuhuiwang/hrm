@@ -38,7 +38,7 @@ import java.util.Date;
  *          ii。普通属性的映射
  */
 @Entity
-@Table(name = "co_company")
+@Table(name = "ma_company")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

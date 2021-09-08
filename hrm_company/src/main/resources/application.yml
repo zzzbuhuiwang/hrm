@@ -1,0 +1,19 @@
+#服务配置
+server:
+  port: 9001
+#spring配置
+spring:
+  #1.应用配置
+  application:
+    name: hrm-company #指定服务名
+  #2.数据库连接池
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/hrm?useSSL=true&nullCatalogMeansCurrent=true&serverTimezone=GMT&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: mysql
+  #3.JPA
+  jpa:
+    database: MySQL
+    show-sql: true
+    open-in-view: true

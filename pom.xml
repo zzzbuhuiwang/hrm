@@ -10,6 +10,7 @@
     <modules>
         <module>hrm_common</module>
         <module>hrm_common_model</module>
+        <module>hrm_company</module>
     </modules>
 
     <packaging>pom</packaging>
