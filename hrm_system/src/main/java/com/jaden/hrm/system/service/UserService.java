@@ -15,5 +15,6 @@ public interface UserService {
     List<User> findAll();
     Page findPage(Map<String,Object> map, int page, int size);
 
+    User findByMobile(String mobile);
     void assignRoles(String userId,List<String> roleIds);
 }

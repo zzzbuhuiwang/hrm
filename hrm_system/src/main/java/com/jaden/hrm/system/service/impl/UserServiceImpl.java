@@ -114,6 +114,13 @@ public class UserServiceImpl extends BaseService implements UserService {
     }
 
     /**
+     * 根据mobile查询用户
+     */
+    public User findByMobile(String mobile) {
+        return userDao.findByMobile(mobile);
+    }
+
+    /**
      * 分配角色
      */
     public void assignRoles(String userId,List<String> roleIds) {
