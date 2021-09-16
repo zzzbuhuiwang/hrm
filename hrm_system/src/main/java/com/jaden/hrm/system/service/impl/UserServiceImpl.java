@@ -2,7 +2,9 @@ package com.jaden.hrm.system.service.impl;
 
 import com.jaden.hrm.common.service.BaseService;
 import com.jaden.hrm.common.utils.IdWorker;
+import com.jaden.hrm.domain.system.Role;
 import com.jaden.hrm.domain.system.User;
+import com.jaden.hrm.system.dao.RoleDao;
 import com.jaden.hrm.system.dao.UserDao;
 import com.jaden.hrm.system.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,15 +20,16 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class UserServiceImpl extends BaseService implements UserService {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private RoleDao roleDao;
 
     @Autowired
     private IdWorker idWorker;
@@ -108,5 +111,23 @@ public class UserServiceImpl extends BaseService implements UserService {
             }
         }, new PageRequest(page-1, size));
         return pageUser;
+    }
+
+    /**
+     * 分配角色
+     */
+    public void assignRoles(String userId,List<String> roleIds) {
+        //1.根据id查询用户
+        User user = userDao.findById(userId).get();
+        //2.设置用户的角色集合
+        Set<Role> roles = new HashSet<>();
+        for (String roleId : roleIds) {
+            Role role = roleDao.findById(roleId).get();
+            roles.add(role);
+        }
+        //设置用户和角色集合的关系
+        user.setRoles(roles);
+        //3.更新用户
+        userDao.save(user);
     }
 }
