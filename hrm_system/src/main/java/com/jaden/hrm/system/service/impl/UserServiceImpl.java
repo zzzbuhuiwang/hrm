@@ -1,5 +1,6 @@
 package com.jaden.hrm.system.service.impl;
 
+import com.jaden.hrm.common.service.BaseService;
 import com.jaden.hrm.common.utils.IdWorker;
 import com.jaden.hrm.domain.system.User;
 import com.jaden.hrm.system.dao.UserDao;
@@ -22,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends BaseService implements UserService {
 
     @Autowired
     private UserDao userDao;
